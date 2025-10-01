@@ -209,8 +209,8 @@ class SortedLinkedList
         if ($this->type === 'int') {
             return $a <=> $b;
         } else { // string
-            // PHPStan thinks this could be an int but we enforce type consistency
-            // @phpstan-ignore argument.type
+            // PHPStan thinks this could be an int but we enforce type consistency so we're good to ignore
+            // @phpstan-ignore-next-line
             return strcmp($a, $b);
         }
     }
