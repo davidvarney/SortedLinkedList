@@ -30,7 +30,7 @@ jobs:
         uses: thenabeel/action-phpcs@v1 # Or another suitable PHPCS action
         with:
             standard: PSR12 # Or your custom standard defined in phpcs.xml
-            files: 'src/' # Specify directories or files to scan
+            files: 'src/ tests/' # Specify directories or files to scan
             # Optional: Add annotations for easier review in GitHub
             # annotations: true
         #- name: Run PHPCS
