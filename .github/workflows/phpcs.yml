@@ -1,0 +1,38 @@
+name: PHPCS
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  phpcs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup PHP and Install PHPCS
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: phpcs
+          # Optionally, install specific standards if not part of your project
+          # phpcodesniffer-standards: WordPress-Core,WordPress-Extra
+
+      - name: Run PHPCS
+        run: phpcs --standard=PSR12 --severity=1 --warning-severity=8 --report=full .
+        # Adjust standard, severity, and report format as needed
+        # Or use a dedicated action for more features like annotations
+        # - name: Run PHPCS with Annotations
+        #   uses: thenabeel/action-phpcs@v1
+        #   with:
+        #     standard: PSR12
+        #     files: 'src/'
+        #     annotations: true

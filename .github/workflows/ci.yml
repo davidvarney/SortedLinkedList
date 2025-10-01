@@ -22,7 +22,7 @@ jobs:
         with:
             php-version: '8.2' # Specify your required PHP version
             #extensions: mbstring, pdo_mysql # Add any necessary PHP extensions
-            tools: composer:v2 , phpcs # Install Composer v2 & PHPCS
+            tools: composer:v2 # , phpcs # Install Composer v2 & PHPCS
       - name: Install Composer Dependencies
         uses: ramsey/composer-install@v2
 
@@ -33,11 +33,11 @@ jobs:
       #      files: 'src/ tests/' # Specify directories or files to scan
       #      # Optional: Add annotations for easier review in GitHub
       #      # annotations: true
-      - name: Run PHPCS
-        run: |
-            # Install PHPCS globally or use a local Composer dependency
-            # composer global require "squizlabs/php_codesniffer=*"
-            ./vendor/bin/phpcs --standard=PSR12 src/ # Adjust standard and path as needed
+      #- name: Run PHPCS
+      #  run: |
+      #      # Install PHPCS globally or use a local Composer dependency
+      #      # composer global require "squizlabs/php_codesniffer=*"
+      #      ./vendor/bin/phpcs --standard=PSR12 src/ # Adjust standard and path as needed
 
       - name: PHPStan Static Analysis
         uses: php-actions/phpstan@v3
