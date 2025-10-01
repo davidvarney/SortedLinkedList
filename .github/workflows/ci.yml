@@ -29,9 +29,9 @@ jobs:
             tools: composer:v2 # Install Composer v2
       - name: Install Composer Dependencies
         uses: ramsey/composer-install@v2
-        with:
-            dependency-versions: 'locked' # Install versions specified in composer.lock
-            composer-options: '--prefer-dist --no-progress' # Add any extra Composer options
+        #with:
+            #dependency-versions: 'locked' # Install versions specified in composer.lock
+            #composer-options: '--prefer-dist --no-progress' # Add any extra Composer options
 
       - name: Run PHPCS
         run: |
