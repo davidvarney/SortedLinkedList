@@ -17,15 +17,6 @@ jobs:
             sudo chown -R runner:runner /home/runner/work
             sudo chmod -R 775 /home/runner/work
 
-      #- name: Setup PHP
-      #  uses: shivammathur/setup-php@v2
-      #  with:
-      #      php-version: '8.3' # Specify your PHP version
-
-      #- name: Install Composer dependencies (if applicable)
-      #  run: composer install --no-interaction --no-progress --prefer-dist
-
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -34,9 +25,6 @@ jobs:
             tools: composer:v2 # Install Composer v2
       - name: Install Composer Dependencies
         uses: ramsey/composer-install@v2
-        #with:
-            #dependency-versions: 'locked' # Install versions specified in composer.lock
-            #composer-options: '--prefer-dist --no-progress' # Add any extra Composer options
 
       - name: Run PHPCS
         run: |

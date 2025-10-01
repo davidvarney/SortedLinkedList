@@ -3,11 +3,12 @@
 namespace DavidVarney\SortedLinkedList;
 
 use InvalidArgumentException;
+use DavidVarney\SortedLinkedList\Node;
 
 class SortedLinkedList
 {
     // Use generic object nodes created by createNode(), kept internal to this class
-    private ?object $head = null;
+    private ?Node $head = null;
     private ?string $type = null; // "int" or "string"
 
     public function __construct()
@@ -26,9 +27,8 @@ class SortedLinkedList
         // Need to enforce the type consistency per specification and for comparison reasons
         $this->enforceType($value);
 
-        // Create our new node to add (anonymous internal node object)
-        $newNode = $this->createNode($value);
-
+        // Create our new node to add
+        $newNode = new Node($value);
 
         // Look at what we currently have, if nothing, add it as the head
         // Or, look at the current value and compare it to the new value to
@@ -196,22 +196,6 @@ class SortedLinkedList
         } elseif ($this->type !== $type) {
             throw new InvalidArgumentException("SortedLinkedList can only hold values of type {$this->type}.");
         }
-    }
-
-    /**
-     * Create an internal node object.
-     * Using a small anonymous object avoids a public Node class while keeping
-     * the implementation simple and typed enough for internal use.
-     *
-     * @param int|string $value
-     * @return object
-     */
-    private function createNode(int|string $value): object
-    {
-        return (object)[
-            'value' => $value,
-            'next' => null,
-        ];
     }
 
     /**
