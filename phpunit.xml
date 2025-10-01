@@ -4,39 +4,18 @@
          displayDetailsOnTestsThatTriggerDeprecations="true"
          displayDetailsOnTestsThatTriggerErrors="true"
          displayDetailsOnTestsThatTriggerNotices="true"
-         displayDetailsOnTestsThatTriggerWarnings="true"
+         displayDetailsOnTestsThatTriggerWarnings="false"
          displayDetailsOnPhpunitDeprecations="true"
-         stopOnFailure="false"
-         stopOnError="false"
-         stopOnWarning="false"
-         stopOnIncomplete="false"
-         stopOnRisky="false"
-         stopOnSkipped="false"
-         enforceTimeLimit="false"
-         beStrictAboutTestsThatDoNotTestAnything="false"
-         beStrictAboutOutputDuringTests="false"
-         processIsolation="false"
-         cacheResult="false"
-         executionOrder="default"
-         failOnRisky="false"
-         failOnWarning="false"
-         failOnIncomplete="false"
-         failOnSkipped="false"
-         extensionsDirectory=""
          testdox="true">
     <testsuites>
-        <testsuite name="Test Suite">
+        <testsuite name="Sorted Linked List Test Suite">
             <directory>./tests/</directory>
+            <exclude>./vendor/</exclude>
         </testsuite>
     </testsuites>
-    <source>
+    <source restrictWarnings="true">
         <include>
             <directory>./src</directory>
         </include>
-        <exclude>
-            <directory suffix=".phar">./vendor</directory>
-            <file>./vendor/phpstan/phpstan/phpstan.phar</file>
-            <file>./vendor/bin/phpstan.phar</file>
-        </exclude>
     </source>
 </phpunit>
