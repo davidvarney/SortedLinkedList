@@ -12,6 +12,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: php-actions/composer@v6
 
+      - name: Set directory permissions
+        run: |
+            sudo chown -R runner:runner /home/runner/work
+            sudo chmod -R 775 /home/runner/work
+
       #- name: Setup PHP
       #  uses: shivammathur/setup-php@v2
       #  with:
