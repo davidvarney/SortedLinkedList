@@ -1,14 +1,22 @@
 {
-    "name": "davidvarney/SortedLinkedList",
+    "name": "davidvarney/sortedlinkedlist",
     "description": "A PHP library providing a sorted linked list for int or string values.",
     "type": "library",
     "autoload": {
         "psr-4": {
-            "DavidVarney\\Collections\\": "src/"
+            "DavidVarney\\SortedLinkedList\\": "src/"
         }
     },
     "require": {
         "php": ">=8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DavidVarney\\SortedLinkedList\\Tests\\": "tests/"
+        }
     },
     "homepage": "https://github.com/davidvarney/SortedLinkedList",
     "license": "MIT",

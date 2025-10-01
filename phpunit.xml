@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php"
+         colors="true"
+         displayDetailsOnTestsThatTriggerDeprecations="true"
+         displayDetailsOnTestsThatTriggerErrors="true"
+         displayDetailsOnTestsThatTriggerNotices="true"
+         displayDetailsOnTestsThatTriggerWarnings="true"
+         displayDetailsOnPhpunitDeprecations="true"
+         stopOnFailure="false"
+         stopOnError="false"
+         stopOnWarning="false"
+         stopOnIncomplete="false"
+         stopOnRisky="false"
+         stopOnSkipped="false"
+         enforceTimeLimit="false"
+         beStrictAboutTestsThatDoNotTestAnything="false"
+         beStrictAboutOutputDuringTests="false"
+         processIsolation="false"
+         cacheResult="false"
+         executionOrder="default"
+         failOnRisky="false"
+         failOnWarning="false"
+         failOnIncomplete="false"
+         failOnSkipped="false"
+         extensionsDirectory=""
+         testdox="true">
+    <testsuites>
+        <testsuite name="default">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
