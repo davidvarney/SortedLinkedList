@@ -1,0 +1,14 @@
+parameters:
+    # Use the strictest level available in current PHPStan releases
+    level: max
+
+    paths:
+        - src
+
+    #autoload_files:
+    #    - vendor/autoload.php
+
+    # Compatibility and sensible defaults to reduce noisy results
+    #checkMissingIterableValueType: false
+    #checkMissingVarAnnotation: false
+    #inferPrivatePropertyTypeFromConstructor: true

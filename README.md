@@ -81,6 +81,16 @@ This repository doesn't include a coverage tool by default, but you can generate
 # open coverage/index.html in your browser
 ```
 
+## CI / PHPStan
+
+This repository runs PHPStan via GitHub Actions on `push` and `pull_request` to `main`.
+
+To run PHPStan locally after installing dev dependencies:
+
+```bash
+./vendor/bin/phpstan analyse -c phpstan.neon
+```
+
 ## License
 
 MIT
