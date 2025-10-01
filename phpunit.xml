@@ -6,7 +6,6 @@
          displayDetailsOnTestsThatTriggerNotices="true"
          displayDetailsOnTestsThatTriggerWarnings="false"
          displayDetailsOnPhpunitDeprecations="true"
-         convertWarningsToExceptions="false"
          testdox="true">
     <testsuites>
         <testsuite name="Sorted Linked List Test Suite">
@@ -14,14 +13,9 @@
             <exclude>./vendor/</exclude>
         </testsuite>
     </testsuites>
-    <!--source restrictWarnings="true">
+    <source restrictWarnings="true">
         <include>
             <directory>./src</directory>
         </include>
-        <exclude>
-            <directory suffix=".phar">./vendor</directory>
-            <file>./vendor/phpstan/phpstan/phpstan.phar</file>
-            <file>./vendor/bin/phpstan.phar</file>
-        </exclude>
-    </source-->
+    </source>
 </phpunit>
