@@ -6,7 +6,8 @@ use InvalidArgumentException;
 
 class SortedLinkedList
 {
-    private ?Node $head = null;
+    // Use generic object nodes created by createNode(), kept internal to this class
+    private ?object $head = null;
     private ?string $type = null; // "int" or "string"
 
     public function __construct()
@@ -25,8 +26,8 @@ class SortedLinkedList
         // Need to enforce the type consistency per specification and for comparison reasons
         $this->enforceType($value);
 
-        // Create our new node to add
-        $newNode = new Node($value);
+        // Create our new node to add (anonymous internal node object)
+        $newNode = $this->createNode($value);
 
 
         // Look at what we currently have, if nothing, add it as the head
@@ -78,7 +79,7 @@ class SortedLinkedList
             $current = $current->next;
         }
 
-        // Return false if the value was not found 
+        // Return false if the value was not found
         if ($current->next === null) {
             return false;
         }
@@ -108,7 +109,7 @@ class SortedLinkedList
 
     /**
      * Check if the list contains a value.
-     * 
+     *
      * Bonus Method - not required but useful
      *
      * @param int|string $value
@@ -131,9 +132,9 @@ class SortedLinkedList
 
     /**
      * Check if the list is empty.
-     * 
+     *
      * Bonus Method - not required but useful
-     * 
+     *
      * @return bool
      */
     public function isEmpty(): bool
@@ -143,9 +144,9 @@ class SortedLinkedList
 
     /**
      * Clear the list.
-     * 
+     *
      * Bonus Method - not required but useful
-     * 
+     *
      * @return void
      */
     public function clear(): void
@@ -157,9 +158,9 @@ class SortedLinkedList
     /**
      * Get the type of values stored in the list.
      * Returns "int", "string", or null if the list is empty.
-     * 
+     *
      * Bonus Method - not required but useful
-     * 
+     *
      * @return string|null
      */
     public function getType(): ?string
@@ -169,9 +170,9 @@ class SortedLinkedList
 
     /**
      * Get a string representation of the list.
-     * 
+     *
      * Bonus Method - not required but useful
-     * 
+     *
      * @param string $glue String to join values with
      * @return string
      */
@@ -198,6 +199,22 @@ class SortedLinkedList
     }
 
     /**
+     * Create an internal node object.
+     * Using a small anonymous object avoids a public Node class while keeping
+     * the implementation simple and typed enough for internal use.
+     *
+     * @param int|string $value
+     * @return object
+     */
+    private function createNode(int|string $value): object
+    {
+        return (object)[
+            'value' => $value,
+            'next' => null,
+        ];
+    }
+
+    /**
      * Compare two values (int or string).
      *
      * @param int|string $a
@@ -213,28 +230,5 @@ class SortedLinkedList
             // @phpstan-ignore-next-line
             return strcmp($a, $b);
         }
-    }
-}
-
-/**
- * Node class for linked list.
- * @internal Only using this for the SortedLinkedList class so really
- *           no need to place this elsewhere for the time being.
- */
-class Node
-{
-    /**
-     * @var int|string Value of the node
-     */
-    public int|string $value;
-    /**
-     * @var Node|null Pointer to the next node
-     */
-    public ?Node $next = null;
-
-    public function __construct(int|string $value)
-    {
-        // Assign the incoming value
-        $this->value = $value;
     }
 }

@@ -193,4 +193,21 @@ class SortedLinkedListTest extends TestCase
         $this->assertSame(0, $method->invoke($list, 'c', 'c'));
         $this->assertGreaterThan(0, $method->invoke($list, 'z', 'y'));
     }
+
+    public function testCreateNodeViaReflection(): void
+    {
+        $list = new SortedLinkedList();
+
+        $refClass = new \ReflectionClass($list);
+        $method = $refClass->getMethod('createNode');
+        $method->setAccessible(true);
+
+        $node = $method->invoke($list, 'hello');
+
+        $this->assertIsObject($node);
+        $this->assertObjectHasProperty('value', $node);
+        $this->assertObjectHasProperty('next', $node);
+        $this->assertSame('hello', $node->value);
+        $this->assertNull($node->next);
+    }
 }
