@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class SortedLinkedListTest extends TestCase
 {
-    public function testAddAndOrderWithInts()
+    public function testAddAndOrderWithInts(): void
     {
         $list = new SortedLinkedList();
         $list->add(5);
@@ -17,7 +17,7 @@ class SortedLinkedListTest extends TestCase
         $this->assertSame([1,3,5], $list->toArray());
     }
 
-    public function testAddAndOrderWithStrings()
+    public function testAddAndOrderWithStrings(): void
     {
         $list = new SortedLinkedList();
         $list->add('banana');
@@ -26,7 +26,7 @@ class SortedLinkedListTest extends TestCase
         $this->assertSame(['apple','banana','cherry'], $list->toArray());
     }
 
-    public function testRemoveExistingValue()
+    public function testRemoveExistingValue(): void
     {
         $list = new SortedLinkedList();
         $list->add(2);
@@ -36,14 +36,14 @@ class SortedLinkedListTest extends TestCase
         $this->assertSame([1,3], $list->toArray());
     }
 
-    public function testRemoveNonExistingValueReturnsFalse()
+    public function testRemoveNonExistingValueReturnsFalse(): void
     {
         $list = new SortedLinkedList();
         $list->add(1);
         $this->assertFalse($list->remove(999));
     }
 
-    public function testTypeEnforcementThrowsOnMixedTypes()
+    public function testTypeEnforcementThrowsOnMixedTypes(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $list = new SortedLinkedList();
@@ -51,7 +51,7 @@ class SortedLinkedListTest extends TestCase
         $list->add('string');
     }
 
-    public function testIsEmptyAndClear()
+    public function testIsEmptyAndClear(): void
     {
         $list = new SortedLinkedList();
         $this->assertTrue($list->isEmpty());
@@ -61,7 +61,7 @@ class SortedLinkedListTest extends TestCase
         $this->assertTrue($list->isEmpty());
     }
 
-    public function testContains()
+    public function testContains(): void
     {
         $list = new SortedLinkedList();
         $list->add('a');
@@ -69,7 +69,7 @@ class SortedLinkedListTest extends TestCase
         $this->assertFalse($list->contains('b'));
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $list = new SortedLinkedList();
         $list->add('banana');
@@ -83,7 +83,7 @@ class SortedLinkedListTest extends TestCase
         $this->assertSame('apple|banana|cherry', $list->toString('|'));
     }
 
-    public function testGetType()
+    public function testGetType(): void
     {
         $list = new SortedLinkedList();
 
@@ -103,7 +103,7 @@ class SortedLinkedListTest extends TestCase
         $this->assertSame('string', $list->getType());
     }
 
-    public function testToArray()
+    public function testToArray(): void
     {
         $list = new SortedLinkedList();
 
@@ -124,7 +124,7 @@ class SortedLinkedListTest extends TestCase
         $this->assertSame(['x','y','z'], $list->toArray());
     }
 
-    public function testEnforceTypeSetsTypeViaReflection()
+    public function testEnforceTypeSetsTypeViaReflection(): void
     {
         $list = new SortedLinkedList();
 
@@ -142,7 +142,7 @@ class SortedLinkedListTest extends TestCase
         $this->assertSame('string', $list->getType());
     }
 
-    public function testEnforceTypeThrowsOnMixedTypesViaReflection()
+    public function testEnforceTypeThrowsOnMixedTypesViaReflection(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -158,7 +158,7 @@ class SortedLinkedListTest extends TestCase
         $method->invoke($list, 'not-int');
     }
 
-    public function testCompareIntsViaReflection()
+    public function testCompareIntsViaReflection(): void
     {
         $list = new SortedLinkedList();
 
@@ -177,7 +177,7 @@ class SortedLinkedListTest extends TestCase
         $this->assertGreaterThan(0, $method->invoke($list, 3, 2));
     }
 
-    public function testCompareStringsViaReflection()
+    public function testCompareStringsViaReflection(): void
     {
         $list = new SortedLinkedList();
 
