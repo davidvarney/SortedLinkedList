@@ -36,7 +36,7 @@ jobs:
       - name: Run PHPCS
         run: |
             # Install PHPCS globally or use a local Composer dependency
-            composer global require "squizlabs/php_codesniffer=*"
+            # composer global require "squizlabs/php_codesniffer=*"
             vendor/bin/phpcs --standard=PSR12 src/ # Adjust standard and path as needed
 
       - name: PHPStan Static Analysis
